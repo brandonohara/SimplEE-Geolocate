@@ -17,7 +17,7 @@
 		
 		function _include_head(){
 			$themes = defined('URL_THIRD_THEMES') ? URL_THIRD_THEMES : get_instance()->config->slash_item('theme_folder_url').'third_party/';
-			$themes = $themes.'geolocatee/';
+			$themes = $themes.'geeolocate/';
 			
 			ee()->cp->add_to_head('<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>');
 			ee()->cp->add_to_head('<link type="text/css" rel="stylesheet" href="'.$themes.'css/cp.css" media="screen" />');
@@ -51,7 +51,7 @@
 			foreach($data as $key => $value){
 				$name = $key.'_field_id_'.$this->field_id;
 				
-				$out .= "<div class='geolocatee_field' ".($key != "address" ? "style='display: none;'" : "").">";
+				$out .= "<div class='geeolocate_field' ".($key != "address" ? "style='display: none;'" : "").">";
 				//$out .= form_label(ucfirst($key), $name);
 				$out .= form_input(array(
 					'id' 	=>	$name,
@@ -61,11 +61,11 @@
 				$out .= "</div>";
 			}
 			
-			$out .= "<div class='geolocatee_field'>";
-			$out .= "<a onclick='GeolocatEE(".$this->field_id.")' class='geolocatee_button'>Geolocate</a>";
+			$out .= "<div class='geeolocate_field'>";
+			$out .= "<a onclick='GEEolocate(".$this->field_id.")' class='geeolocate_button'>Geolocate</a>";
 			$out .= "</div>";
 			$out .= "<div style='clear: both;'></div>";
-			$out .= "<p class='geolocatee_message' id='message_field_id_".$this->field_id."'></p>";
+			$out .= "<p class='geeolocate_message' id='message_field_id_".$this->field_id."'></p>";
 			
 			return $out;
 		}
