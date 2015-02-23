@@ -1,0 +1,25 @@
+.simplee_geolocate_field {
+	float: left;
+	width: 200px;
+}
+.simplee_geolocate_button {
+	display: block;
+	width: 80px;
+	margin-left: 15px;
+	padding: 5px 15px;
+	font-size: 12px;
+	color: #fff;
+	text-align: center;
+	background-color: #3A484E;
+	border-radius: 5px;
+}
+.simplee_geolocate_button:hover {
+	color: #fff !important;
+	text-decoration: none !important;
+	background-color: #8F9A9C;
+	cursor: pointer;
+}
+.simplee_geolocate_message {
+	margin: 5px 0px !important;
+	padding: 0px !important;
+}
