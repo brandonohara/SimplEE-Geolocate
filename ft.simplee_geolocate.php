@@ -52,23 +52,25 @@
 			return array_merge($this->settings, $_POST);
 		}
 		
-		function display_settings(){
-			ee()->table->add_row(
-				"Update Past Entries?",
-				form_dropdown('update_entries', array('no' => "No", 'yes' => "Yes"))
-			);
+		function display_settings($data){
+			if($data['field_id']){
+				ee()->table->add_row(
+					"Update Past Entries?",
+					form_dropdown('update_entries', array('no' => "No", 'yes' => "Yes"))
+				);
+			}
 		}
 		
 		function save_settings($data){
 			$update = ee()->input->post('update_entries');
 			$field_id = "field_id_".$data['field_id'];
-			$field_id_copy = $field_id; //"field_id_2";
+			$field_id_copy = $field_id; //"field_id_2"; USE THIS TO COPY OTHER FIELD DATA WITHOUT OVERWRITTING
 			
 			if($update == "yes" && $field_id){
-				$query = ee()->db->where($field_id." IS NOT NULL", null, false)->from("channel_data")->get();
+				$query = ee()->db->where($field_id_copy." IS NOT NULL", null, false)->from("channel_data")->get();
 				foreach($query->result_array() as $row){
 					$entry_id = $row['entry_id'];
-					$old = $row[$field_id];
+					$old = $row[$field_id_copy];
 					
 					if(base64_encode(base64_decode($old, true)) !== $old){
 						//address is just saved as a string
